@@ -1,0 +1,15 @@
+#!/usr/bin/env ruby
+
+# frozen_string_literal: true
+
+require 'bundler/setup'
+require 'belt'
+
+begin
+  filename = ARGV.dup[0]
+  file = Belt::File.new(filename)
+  file.process
+rescue Belt::Error => e
+  puts e.message.to_s
+  exit 1
+end

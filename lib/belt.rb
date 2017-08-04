@@ -1,6 +1,10 @@
 # frozen_string_literal: true
 
 require 'belt/version'
+require 'belt/error'
+require 'belt/parser'
+require 'belt/read'
+require 'belt/file'
 
 # Simple belt-like computer to explore interpretation
 module Belt
