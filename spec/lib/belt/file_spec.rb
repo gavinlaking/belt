@@ -7,6 +7,10 @@ module Belt
     let(:file) { described_class.new(name) }
     let(:name) { './spec/support/file.bt' }
 
+    describe '#initialize' do
+      it { expect(file.instance_variable_get('@name')).to eql(name) }
+    end
+
     describe '#process' do
       subject(:process) { file.process }
 

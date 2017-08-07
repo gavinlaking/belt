@@ -3,6 +3,7 @@
 require 'belt/version'
 require 'belt/error'
 require 'belt/parser'
+require 'belt/program_counter'
 require 'belt/read'
 require 'belt/file'
 

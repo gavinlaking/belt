@@ -7,14 +7,18 @@ module Belt
     end
 
     def process
-      name? { exists? { contents? { Read.new(lines).read } } }
-    rescue Belt::Halt
-      raise Belt::Error, "\e[31mHalted: '#{name}'\e[39m"
+      name? { exists? { contents? { read } } }
     end
 
     private
 
     attr_reader :name
+
+    def read
+      Read.new(belt: lines).read
+    rescue Belt::Halt
+      raise Belt::Error, message
+    end
 
     def lines
       ::File.readlines(name)
@@ -22,28 +26,26 @@ module Belt
       raise Belt::Error, 'Usage: belt [filename]'
     end
 
-    def name?(&_block)
-      if name.empty?
-        raise Belt::UsageError, name
-      else
-        yield
-      end
+    def name?
+      raise Belt::UsageError, name if name.empty?
+
+      yield
     end
 
-    def exists?(&_block)
-      if ::File.exists?(name)
-        yield
-      else
-        raise Belt::FileNotFoundError, name
-      end
+    def exists?
+      raise Belt::FileNotFoundError, name unless ::File.exist?(name)
+
+      yield
     end
 
-    def contents?(&_block)
-      if ::File.size?(name)
-        yield
-      else
-        raise Belt::FileEmptyError, name
-      end
+    def contents?
+      raise Belt::FileEmptyError, name unless ::File.size?(name)
+
+      yield
+    end
+
+    def message
+      "\e[31mHalted: '#{name}'\e[39m"
     end
   end
 end

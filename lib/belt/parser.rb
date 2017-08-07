@@ -1,25 +1,30 @@
+# frozen_string_literal: true
+
 module Belt
   class Parser
-    def initialize(raw)
+    def initialize(raw:)
       @raw = raw
     end
 
     def parse
-      if raw =~ /^halt/
+      if matches?(/^halt/)
         raise Belt::Halt
-      elsif raw =~ /^beep/
-        puts "beep"
-      elsif raw =~ /^noop/
-        sleep 1
-        puts "noop"
+      elsif matches?(/^beep/)
+        puts 'beep'
+      elsif matches?(/^noop/)
+        puts 'noop'
       else
-        puts "----"
+        puts '----'
       end
     end
 
     private
 
     attr_reader :raw
+
+    def matches?(reg_exp)
+      raw.match?(reg_exp)
+    end
 
     def data
       raw.chomp

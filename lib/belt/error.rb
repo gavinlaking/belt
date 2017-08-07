@@ -1,7 +1,7 @@
+# frozen_string_literal: true
+
 module Belt
   Error = Class.new(StandardError)
-
-  Exception = Class.new(StandardError)
 
   class FileEmptyError < Belt::Error
     def message
@@ -21,7 +21,7 @@ module Belt
     end
   end
 
-  class Halt < Exception
+  class Halt < Belt::Error
     def message
       "Halted: '#{super}'"
     end
