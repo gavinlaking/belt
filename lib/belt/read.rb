@@ -4,8 +4,8 @@ module Belt
   class Read # VM
     extend Forwardable
 
-    def initialize(belt:)
-      @belt = belt
+    def initialize(program:)
+      @program = program
     end
 
     def read
@@ -16,7 +16,7 @@ module Belt
 
     private
 
-    attr_reader :belt
+    attr_reader :program
 
     def_delegators :parser, :parse
 
@@ -25,7 +25,7 @@ module Belt
     end
 
     def pc
-      @pc ||= ProgramCounter.new(address: 0, belt: belt)
+      @pc ||= ProgramCounter.new(address: 0, program: program)
     end
   end
 end

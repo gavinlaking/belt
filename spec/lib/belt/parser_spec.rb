@@ -13,6 +13,22 @@ module Belt
 
     describe '#parse' do
       subject(:parse) { parser.parse }
+
+      context 'when "halt"' do
+        xit
+      end
+
+      context 'when "beep"' do
+        xit
+      end
+
+      context 'when "noop"' do
+        xit
+      end
+
+      context 'when the instruction cannot be parsed' do
+        xit
+      end
     end
   end
 end

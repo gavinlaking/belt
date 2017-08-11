@@ -15,9 +15,13 @@ module Belt
     attr_reader :name
 
     def read
-      Read.new(belt: lines).read
+      Read.new(program: program).read
     rescue Belt::Halt
       raise Belt::Error, message
+    end
+
+    def program
+      Belt::Program.new(lines: lines)
     end
 
     def lines

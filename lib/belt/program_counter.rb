@@ -6,9 +6,9 @@ module Belt
 
     attr_reader :address
 
-    def initialize(address:, belt:)
+    def initialize(address:, program:)
       @address = address
-      @belt = belt
+      @program = program
     end
 
     def read
@@ -17,11 +17,11 @@ module Belt
 
     private
 
-    attr_reader :belt
-    def_delegators :belt, :size
+    attr_reader :program
+    def_delegators :program, :size
 
     def fetch
-      position.tap { yield }
+      program.fetch(address).tap { yield }
     end
 
     def increment
@@ -30,10 +30,6 @@ module Belt
       else
         @address += 1
       end
-    end
-
-    def position
-      belt[address]
     end
   end
 end

@@ -2,6 +2,8 @@
 
 require 'belt/version'
 require 'belt/error'
+require 'belt/register'
+require 'belt/program'
 require 'belt/parser'
 require 'belt/program_counter'
 require 'belt/read'

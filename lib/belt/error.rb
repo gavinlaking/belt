@@ -15,6 +15,12 @@ module Belt
     end
   end
 
+  class OutOfRangeError < Belt::Error
+    def message
+      'Out of range.'
+    end
+  end
+
   class UsageError < Belt::Error
     def message
       'Usage: belt [filename]'

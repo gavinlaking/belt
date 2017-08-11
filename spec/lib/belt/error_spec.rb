@@ -15,6 +15,10 @@ module Belt
     xit {}
   end
 
+  RSpec.describe OutOfRangeError do
+    xit {}
+  end
+
   RSpec.describe UsageError do
     xit {}
   end
