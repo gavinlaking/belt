@@ -2,6 +2,8 @@
 
 module Belt
   class File
+    extend Forwardable
+
     def initialize(name)
       @name = name.to_s
     end
@@ -14,10 +16,10 @@ module Belt
 
     attr_reader :name
 
-    def read
-      Read.new(program: program).read
-    rescue Belt::Halt
-      raise Belt::Error, message
+    def_delegators :vm, :read
+
+    def vm
+      VM.new(program: program)
     end
 
     def program
@@ -26,30 +28,24 @@ module Belt
 
     def lines
       ::File.readlines(name)
-    rescue Errno::ENOENT
-      raise Belt::Error, 'Usage: belt [filename]'
     end
 
     def name?
-      raise Belt::UsageError, name if name.empty?
+      yield unless name.empty?
 
-      yield
+      raise Belt::UsageError, name
     end
 
     def exists?
-      raise Belt::FileNotFoundError, name unless ::File.exist?(name)
+      yield if ::File.exist?(name)
 
-      yield
+      raise Belt::FileNotFoundError, name
     end
 
     def contents?
-      raise Belt::FileEmptyError, name unless ::File.size?(name)
+      yield if ::File.size?(name)
 
-      yield
-    end
-
-    def message
-      "\e[31mHalted: '#{name}'\e[39m"
+      raise Belt::FileEmptyError, name
     end
   end
 end

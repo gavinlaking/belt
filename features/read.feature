@@ -19,7 +19,7 @@ Feature: Read
     When I run `belt halt.bt` interactively
     Then I will see the following output:
     """
-    Halted: 'halt.bt'
+    Halted.
     """
 
   Scenario: Instruction: 'noop'
@@ -32,7 +32,7 @@ Feature: Read
     Then I will see the following output:
     """
     noop
-    Halted: 'noop.bt'
+    Halted.
     """
 
   Scenario: Instruction: 'beep'
@@ -45,5 +45,5 @@ Feature: Read
     Then I will see the following output:
     """
     beep
-    Halted: 'beep.bt'
+    Halted.
     """

@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 module Belt
-  class Read # VM
+  class VM
     extend Forwardable
 
     def initialize(program:)
@@ -10,8 +10,6 @@ module Belt
 
     def read
       loop { parse }
-    rescue Belt::Halt
-      raise Belt::Halt
     end
 
     private

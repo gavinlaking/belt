@@ -15,6 +15,12 @@ module Belt
     end
   end
 
+  class Halt < Belt::Error
+    def message
+      'Halted.'
+    end
+  end
+
   class OutOfRangeError < Belt::Error
     def message
       'Out of range.'
@@ -24,12 +30,6 @@ module Belt
   class UsageError < Belt::Error
     def message
       'Usage: belt [filename]'
-    end
-  end
-
-  class Halt < Belt::Error
-    def message
-      "Halted: '#{super}'"
     end
   end
 end

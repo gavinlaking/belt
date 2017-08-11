@@ -3,7 +3,7 @@
 require 'spec_helper'
 
 module Belt
-  RSpec.describe Read do
+  RSpec.describe VM do
     let(:read) { described_class.new(program: program) }
     let(:program) { ["halt\n"] }
 
