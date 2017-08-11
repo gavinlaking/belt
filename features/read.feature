@@ -47,3 +47,37 @@ Feature: Read
     beep
     Halted.
     """
+
+  Scenario: Instruction: 'inc'
+    Given a file named "inc.bt" with:
+    """
+    incr
+    incr
+    incr
+    halt
+    """
+    When I run `belt inc.bt` interactively
+    Then I will see the following output:
+    """
+    1
+    2
+    3
+    Halted.
+    """
+
+  Scenario: Instruction: 'dec'
+    Given a file named "dec.bt" with:
+    """
+    incr
+    incr
+    decr
+    halt
+    """
+    When I run `belt dec.bt` interactively
+    Then I will see the following output:
+    """
+    1
+    2
+    1
+    Halted.
+    """

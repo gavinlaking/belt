@@ -2,8 +2,9 @@
 
 module Belt
   class Parser
-    def initialize(raw:)
+    def initialize(raw:, bc:)
       @raw = raw
+      @bc = bc
     end
 
     def parse
@@ -13,6 +14,12 @@ module Belt
         puts 'beep'
       elsif matches?(/^noop/)
         puts 'noop'
+      elsif matches?(/^incr/)
+        bc.increment
+      elsif matches?(/^decr/)
+        bc.decrement
+      elsif matches?(/^jump/)
+
       else
         puts '----'
       end
@@ -20,7 +27,7 @@ module Belt
 
     private
 
-    attr_reader :raw
+    attr_reader :raw, :bc
 
     def matches?(reg_exp)
       raw.match?(reg_exp)

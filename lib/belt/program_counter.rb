@@ -18,6 +18,7 @@ module Belt
     private
 
     attr_reader :program
+
     def_delegators :program, :size
 
     def fetch

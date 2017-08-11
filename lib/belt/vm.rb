@@ -19,11 +19,15 @@ module Belt
     def_delegators :parser, :parse
 
     def parser
-      Parser.new(raw: pc.read)
+      Parser.new(raw: pc.read, bc: bc)
     end
 
     def pc
       @pc ||= ProgramCounter.new(address: 0, program: program)
+    end
+
+    def bc
+      @bc ||= ByteCounter.new(value: 0)
     end
   end
 end
