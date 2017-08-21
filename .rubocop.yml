@@ -1,0 +1,83 @@
+AllCops:
+  Include:
+    - '**/*.gemspec'
+    - '**/*.podspec'
+    - '**/*.jbuilder'
+    - '**/*.rake'
+    - '**/*.opal'
+    - '**/Gemfile'
+    - '**/Rakefile'
+    - '**/Capfile'
+    - '**/Guardfile'
+    - '**/Podfile'
+    - '**/Thorfile'
+    - '**/Vagrantfile'
+    - '**/Berksfile'
+    - '**/Cheffile'
+    - '**/Vagabondfile'
+  DisplayCopNames: true
+  DisplayStyleGuide: true
+  StyleGuideCopsOnly: false
+  TargetRubyVersion: 2.4
+
+Layout/EmptyLinesAroundBlockBody:
+  EnforcedStyle: no_empty_lines
+
+Layout/EmptyLinesAroundClassBody:
+  EnforcedStyle: no_empty_lines
+
+Layout/EmptyLinesAroundModuleBody:
+  EnforcedStyle: no_empty_lines
+
+Layout/SpaceAroundOperators:
+  Enabled: false
+
+Layout/TrailingBlankLines:
+  EnforcedStyle: final_newline
+
+Style/AsciiComments:
+  Description: 'Use only ascii symbols in comments.'
+  StyleGuide: 'https://github.com/bbatsov/ruby-style-guide#english-comments'
+  Enabled: false
+
+Style/Documentation:
+  Description: 'Document classes and non-namespace modules.'
+  Enabled: false
+
+Style/MultilineBlockChain:
+  Enabled: false
+
+Style/ModuleFunction:
+  Enabled: false
+
+Style/RescueModifier:
+  Enabled: false
+
+Style/SymbolArray:
+  Enabled: false
+
+Style/TrailingCommaInLiteral:
+  EnforcedStyleForMultiline: comma
+
+Metrics/AbcSize:
+  Max: 25
+
+Metrics/BlockLength:
+  Enabled: false
+
+Metrics/ClassLength:
+  Description: 'Avoid classes longer than 100 lines of code.'
+  Enabled: false
+
+Metrics/CyclomaticComplexity:
+  Max: 12
+
+Metrics/MethodLength:
+  CountComments: false
+  Max: 30
+
+Metrics/ModuleLength:
+  Max: 200
+
+Metrics/PerceivedComplexity:
+  Max: 10
