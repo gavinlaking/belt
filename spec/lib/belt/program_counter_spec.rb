@@ -24,12 +24,12 @@ module Belt
     end
 
     describe '#read' do
-      subject { program_counter.read }
+      subject(:read) { program_counter.read }
 
       xit 'reads the program at the current position'
 
       it 'move the program forward ready for the next instruction' do
-        subject
+        read
         expect(program_counter.address).to eql(4)
       end
     end

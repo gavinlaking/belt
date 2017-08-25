@@ -14,8 +14,28 @@ module Belt
     describe '#process' do
       subject(:process) { file.process }
 
-      xit 'returns the contents of the file as an array of lines' do
-        expect(process).to eql(["halt\n"])
+      context 'when the file contains processable code' do
+        it 'interprets and executes the instructions' do
+          expect { process }.to raise_exception(Belt::Halt)
+        end
+      end
+
+      context 'when the filename is not given' do
+        let(:name) { '' }
+
+        it { expect { process }.to raise_exception(Belt::UsageError) }
+      end
+
+      context 'when the file does not exist' do
+        let(:name) { './spec/support/missing.bt' }
+
+        it { expect { process }.to raise_exception(Belt::FileNotFoundError) }
+      end
+
+      context 'when the file is empty' do
+        let(:name) { './spec/support/empty.bt' }
+
+        it { expect { process }.to raise_exception(Belt::FileEmptyError) }
       end
     end
   end

@@ -44,6 +44,8 @@ module Belt
     describe '#reset' do
       subject(:reset) { byte_counter.reset }
 
+      let(:value) { 12 }
+
       it 'returns the counter reset to 0' do
         expect(reset).to eql(0)
       end
